@@ -19,7 +19,7 @@ yarn add seerbit-react-native
    https://doc.seerbit.com
 
 ## Support 
-If you have any problems, questions or suggestions, create an issue here or send your inquiry to care@seerbit.com
+If you have any problems, questions or suggestions, create an issue here or send your inquiry to developers@seerbit.com
 
 ## Implementation
 You should already have your API keys. If not, go to [dashboard.seerbitapi.com](https://dashboard.seerbitapi.com).
