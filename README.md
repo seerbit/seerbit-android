@@ -2,7 +2,7 @@
 <img width="500" valign="top" src="https://res.cloudinary.com/dpejkbof5/image/upload/v1620323718/Seerbit_logo_png_ddcor4.png" data-canonical-src="https://res.cloudinary.com/dpejkbof5/image/upload/v1620323718/Seerbit_logo_png_ddcor4.png" style="max-width:100%; ">
 </p>
 
-# Seerbit Android WebView SDK
+# Seerbit Android SDK
 
 Seerit Android SDK can be used to integrate the SeerBit payment gateway into your Android application. 
 
@@ -68,7 +68,7 @@ The following sections provides detailed documentation for every component in th
 
 
 ### TransactionModel
-A transaction model is used for passing data to seerbitview, it contains details such as the transaction reference, the currency of the transaction, the email, the amount, the description, country, callback url (which is a url used for callbacks), your public key, and the full name. In order for seerbitview to open a valid transaction model all these values must be set before calling the .open() method. If not the seerbitview might not be initialized properly. This is an example of a valid transaction model
+A transaction model is used for passing data to seerbit SDK, it contains details such as the transaction reference, the currency of the transaction, the email, the amount, the description, country, callback url (which is a url used for callbacks), your public key, and the full name. In order for seerbit SDK to open a valid transaction model all these values must be set before calling the .open() method. If not the seerbit SDK might not be initialized properly. This is an example of a valid transaction model
 ```java
 TransactionModel transactionModel = new TransactionModel();
 /*
@@ -110,13 +110,13 @@ transactionModel.setPublic_key("public key");
 */
 transactionModel.setFull_name("Seer Bit");
 ```
-### Closing the seerbitview
+### Closing the seerbit SDK
 
-In case the need ever arises to manually close the seerbitview. There is a method that can be used to release all resources associated with the view. This is done by using the .close() which takes in no arguments.
+In case the need ever arises to manually close the seerbit SDK. There is a method that can be used to release all resources associated with the view. This is done by using the .close() which takes in no arguments.
 
 ### State flow of the API
 
-The expected workflow of the API is to firstly create an instance of the seerbitview, the call the .open() method by passing it a transaction model to open, the view is automatically closed after a successful transaction.
+The expected workflow of the API is to firstly create an instance of the seerbit SDK, the call the .open() method by passing it a transaction model to open, the view is automatically closed after a successful transaction.
 
 ## Contributors
 <span>
