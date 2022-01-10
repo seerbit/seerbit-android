@@ -9,8 +9,7 @@ Seerit Android SDK can be used to integrate the SeerBit payment gateway into you
 ## Requirements 
 Register for a merchant account on [Seerbit Merchant Dashboard](https://dashboard.seerbitapi.com) to get started. 
 
-How to
-To get a SeerbitAndroid sdk into your build:
+## How to to get a SeerbitAndroid sdk into your build:
 
 Step 1. Add the JitPack repository to your build file
 
