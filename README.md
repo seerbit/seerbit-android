@@ -9,12 +9,28 @@ Seerit Android SDK can be used to integrate the SeerBit payment gateway into you
 ## Requirements 
 Register for a merchant account on [Seerbit Merchant Dashboard](https://dashboard.seerbitapi.com) to get started. 
 
-```bash
-npm install --save seerbit-react-native
-```
-```bash
-yarn add seerbit-react-native
-```
+How to
+To get a SeerbitAndroid sdk into your build:
+
+Step 1. Add the JitPack repository to your build file
+
+gradle
+maven
+sbt
+leiningen
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.seerbit:seerbit-android:v1.0.1'
+	}
 ## API Documentation 
    https://doc.seerbit.com
 
