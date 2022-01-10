@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SeerBit</title>
+    </head>
+    <body  onload="paywithSeerbit()" style="background-color:#fff;height:100vh ">
+        <form>
+            <script src="https://checkout.seerbitapi.com/api/v2/seerbit.js"></script>
+        </form>
+        <script>
+               function paywithSeerbit() {
+                 SeerbitPay({
+                 tranref: "1641459342034",
+                 currency: "NGN",
+                 description: "TEST",
+                 country: "NG",
+                 amount: 20000,
+                 callbackurl: "http://yourdomain.com",
+                 public_key: "SBTESTPUBK_y9xF4issbbpKaMEnP5Fv4y0u75523ko2"
+                },
+                function callback(response) {
+                 var resp = {event:'callback', response};
+                },
+                function close(close) {
+                 var resp = {event:'cancelled'};
+                })
+               }
+              </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SeerBit</title>
+    </head>
+    <body  onload="paywithSeerbit()" style="background-color:#fff;height:100vh ">
+        <form>
+            <script src="https://checkout.seerbitapi.com/api/v2/seerbit.js"></script>
+        </form>
+        <script>
+               function paywithSeerbit() {
+                 SeerbitPay({
+                 "tranref": "${this.props.transaction_reference}",
+                 "currency": "${this.props.currency}",
+                 "email": "${this.props.email ? this.props.email : ''}",
+                 "description":"${this.props.description}",
+                 "full_name":"${this.props.full_name ? this.props.full_name : ''}",
+                 "country": "${this.props.country}",
+                 "amount": "${this.props.amount}",
+                 "callbackurl": "${this.props.callbackurl}",
+                 "public_key":"${this.props.public_key}",
+                 "narrator":"seerbit-react-native",
+                 "report_link":"${report_link}",
+                 "pocketReference":"${this.props.pocket_reference}",
+                 "vendorId":"${this.props.vendor_id}",
+                 "version": "0.2.0"
+                },
+                function callback(response) {
+                 var resp = {event:'callback', response};
+                 window.ReactNativeWebView.postMessage(JSON.stringify(resp))
+                },
+                function close(close) {
+                 var resp = {event:'cancelled'};
+                 window.ReactNativeWebView.postMessage(JSON.stringify(resp))
+                })
+               }
+              </script>
+    </body>
+</html>
