@@ -7,7 +7,6 @@ import android.widget.FrameLayout;
 
 import com.seerbit.seerbitandroid.data.TransactionModel;
 import com.seerbit.seerbitandroid.view.presentation.SeerbitView;
-import com.seerbit.seerbitandroid.view.webviews.SeerbitWebView;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
