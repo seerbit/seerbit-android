@@ -19,15 +19,14 @@ public class MainActivity extends AppCompatActivity {
         webView = findViewById(R.id.webview);
         TransactionModel transactionModel = new TransactionModel();
         String transRef = ""+System.currentTimeMillis();
-        Log.d(TAG, "onCreate: "+transRef);
         transactionModel.setTranref(transRef);
-        transactionModel.setCurrency("NGN");
-        transactionModel.setEmail("adewoleopw@gmail.com");
+        transactionModel.setCurrency(" ");
+        transactionModel.setEmail(" ");
         transactionModel.setAmount(100);
         transactionModel.setDescription("Payment of bils");
         transactionModel.setCountry("NG");
         transactionModel.setCallbackurl("https://whatever.com");
-        transactionModel.setPublic_key("SBTESTPUBK_y9xF4issbbpKaMEnP5Fv4y0u75523ko2");
+        transactionModel.setPublic_key(" ");
         transactionModel.setFull_name("Adewole Opeyemi");
         seerbitWebView = new SeerbitView(this);
         webView.addView(seerbitWebView);
