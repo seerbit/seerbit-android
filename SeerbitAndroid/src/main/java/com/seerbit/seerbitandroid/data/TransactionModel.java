@@ -3,7 +3,7 @@ package com.seerbit.seerbitandroid.data;
 import android.webkit.JavascriptInterface;
 
 public class TransactionModel {
-    String tranref, currency, email, description, full_name, country, callbackurl, public_key, pocketReference, vendorId, version;
+    String tranref, currency, email, description, full_name, country, callbackurl, public_key, pocketReference, vendorId;
     int amount;
 
     public TransactionModel(String tranref,
@@ -28,7 +28,6 @@ public class TransactionModel {
         this.public_key = public_key;
         this.pocketReference = pocketReference;
         this.vendorId = vendorId;
-        this.version = version;
         this.amount = amount;
     }
 
@@ -133,16 +132,6 @@ public class TransactionModel {
     @JavascriptInterface
     public void setVendorId(String vendorId) {
         this.vendorId = vendorId;
-    }
-
-    @JavascriptInterface
-    public String getVersion() {
-        return version;
-    }
-
-    @JavascriptInterface
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     @JavascriptInterface

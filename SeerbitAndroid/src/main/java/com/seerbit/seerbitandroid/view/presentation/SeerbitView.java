@@ -50,7 +50,6 @@ public class SeerbitView extends FrameLayout implements
                 addView(seerbitRedirectWebview);
             }
         });
-        //seerbitRedirectWebview = new SeerbitRedirectWebview(context, url);
         Log.d("TAG", "onRedirct: "+url);
     }
 
