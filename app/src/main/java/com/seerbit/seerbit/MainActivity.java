@@ -30,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
         transactionModel.setCallbackurl("https://whatever.com");
         transactionModel.setPublic_key("SBTESTPUBK_y9xF4issbbpKaMEnP5Fv4y0u75523ko2");
         transactionModel.setFull_name("Adewole Opeyemi");
-        seerbitWebView = new SeerbitView(this, transactionModel);
+        seerbitWebView = new SeerbitView(this);
         webView.addView(seerbitWebView);
+        seerbitWebView.open(transactionModel);
         getSupportActionBar().hide();
     }
 }

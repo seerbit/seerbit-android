@@ -28,14 +28,17 @@ public class SeerbitView extends FrameLayout implements
     SeerbitWebView seerbitWebView;
     SeerbitRedirectWebview seerbitRedirectWebview;
     Activity context;
-    public SeerbitView(@NonNull Activity context, TransactionModel transactionModel) {
+    public SeerbitView(@NonNull Activity context) {
         super(context);
         this.context = context;
-        seerbitWebView = new SeerbitWebView(context, transactionModel, this, this);
-        initViews();
     }
 
-    private void initViews() {
+    public void open(TransactionModel transactionModel) {
+        if (seerbitWebView != null){
+            removeView(seerbitWebView);
+            seerbitWebView = null;
+        }
+        seerbitWebView = new SeerbitWebView(context, transactionModel, this, this);
         addView(seerbitWebView);
     }
 
@@ -55,6 +58,8 @@ public class SeerbitView extends FrameLayout implements
 
     public void close(){
         SeerbitView view = this;
+        seerbitWebView = null;
+        seerbitRedirectWebview = null;
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
