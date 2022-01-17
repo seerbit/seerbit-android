@@ -1,4 +1,4 @@
-package com.seerbit.seerbitandroid.data;
+package com.seerbit.seerbitandroid.view.webviews;
 
 import com.google.gson.annotations.SerializedName;
 

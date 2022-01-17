@@ -2,10 +2,9 @@ package com.seerbit.seerbit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.FrameLayout;
 
-import com.seerbit.seerbitandroid.data.TransactionModel;
+import com.seerbit.seerbitandroid.view.webviews.TransactionModel;
 import com.seerbit.seerbitandroid.view.presentation.SeerbitView;
 
 public class MainActivity extends AppCompatActivity {

@@ -11,11 +11,8 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.seerbit.seerbitandroid.client.SeerbitChromeClient;
-import com.seerbit.seerbitandroid.data.RedirectModel;
-import com.seerbit.seerbitandroid.data.TransactionModel;
 import com.seerbit.seerbitandroid.interfaces.Callback;
 import com.seerbit.seerbitandroid.utils.JSTestJV;
-import com.seerbit.seerbitandroid.view.presentation.SeerbitView;
 
 public class SeerbitWebView extends WebView implements Callback.eventsListener{
     public static final String TAG = SeerbitWebView.class.getSimpleName();

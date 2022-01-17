@@ -1,24 +1,18 @@
 package com.seerbit.seerbitandroid.view.presentation;
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
-import com.seerbit.seerbitandroid.data.TransactionModel;
-import com.seerbit.seerbitandroid.interfaces.Callback;
+import com.seerbit.seerbitandroid.view.webviews.TransactionModel;
 import com.seerbit.seerbitandroid.view.webviews.CongratsWebview;
 import com.seerbit.seerbitandroid.view.webviews.SeerbitRedirectWebview;
 import com.seerbit.seerbitandroid.view.webviews.SeerbitWebView;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class SeerbitView extends FrameLayout implements
         SeerbitWebView.onRedirect,

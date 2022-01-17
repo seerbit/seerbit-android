@@ -4,21 +4,53 @@
 
 # Seerbit Android SDK
 
-Seerit Android SDK can be used to integrate the SeerBit payment gateway into your Android application. 
+Seerit Android SDK can be used to integrate the SeerBit payment gateway into your Android application.
 
-## Requirements 
-Register for a merchant account on [Seerbit Merchant Dashboard](https://dashboard.seerbitapi.com) to get started. 
+## Requirements
+Register for a merchant account on [Seerbit Merchant Dashboard](https://dashboard.seerbitapi.com) to get started.
+To get a Git project into your build:
 
-```bash
-npm install --save seerbit-react-native
-```
-```bash
-yarn add seerbit-react-native
-```
-## API Documentation 
-   https://doc.seerbit.com
 
-## Support 
+
+Step 1. Add the JitPack repository to your build file
+
+### Gradle
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.seerbit:seerbit-android:1.0.7'
+	}
+
+
+### Maven
+Step 1. Add the JitPack repository to your build file
+
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
+Step 2. Add the dependency
+
+	<dependency>
+	    <groupId>com.github.seerbit</groupId>
+	    <artifactId>seerbit-android</artifactId>
+	    <version>1.0.7</version>
+	</dependency>
+## API Documentation
+https://doc.seerbit.com
+
+## Support
 If you have any problems, questions or suggestions, create an issue here or send your inquiry to developers@seerbit.com
 
 ## Implementation
@@ -28,13 +60,13 @@ You should already have your API keys. If not, go to [dashboard.seerbitapi.com](
 
 ```xml
 <FrameLayout
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    android:id="@+id/view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"/>
 ```
 
 Next create an instance of a seerbit view and add it into a framelayout
@@ -43,24 +75,24 @@ Next create an instance of a seerbit view and add it into a framelayout
 FrameLayout webView = findViewById(R.id.view);
 
 //Create a new transaction model
-TransactionModel transactionModel = new TransactionModel();
-String transRef = ""+System.currentTimeMillis();
-transactionModel.setTranref(transRef);
-transactionModel.setCurrency("your currency");
-transactionModel.setEmail("your email address");
-transactionModel.setAmount(your amount in integer);
-transactionModel.setDescription("your description");
-transactionModel.setCountry("your country");
-transactionModel.setCallbackurl("https://yourcallbackurl.com");
-transactionModel.setPublic_key("your public key");
-transactionModel.setFull_name("full name");
-        
+        TransactionModel transactionModel = new TransactionModel();
+        String transRef = ""+System.currentTimeMillis();
+        transactionModel.setTranref(transRef);
+        transactionModel.setCurrency("your currency");
+        transactionModel.setEmail("your email address");
+        transactionModel.setAmount(your amount in integer);
+        transactionModel.setDescription("your description");
+        transactionModel.setCountry("your country");
+        transactionModel.setCallbackurl("https://yourcallbackurl.com");
+        transactionModel.setPublic_key("your public key");
+        transactionModel.setFull_name("full name");
+
 //Create a new instance of seerbitview
-SeerbitView seerbitWebView = new SeerbitView(this);
-webView.addView(seerbitWebView);
+        SeerbitView seerbitWebView = new SeerbitView(this);
+        webView.addView(seerbitWebView);
 
 // opens the view with the defined transaction model
-seerbitWebView.open(transactionModel);
+        seerbitWebView.open(transactionModel);
 ```
 
 ## API Documentation
@@ -74,41 +106,41 @@ TransactionModel transactionModel = new TransactionModel();
 /*
 transRef-> String: Used as a transaction reference
 */
-String transRef = ""+System.currentTimeMillis();
-transactionModel.setTranref(transRef);
+        String transRef = ""+System.currentTimeMillis();
+        transactionModel.setTranref(transRef);
 /**
-Currency-> String: Used to specify the currency of payment
-*/
-transactionModel.setCurrency("NGN");
+ Currency-> String: Used to specify the currency of payment
+ */
+        transactionModel.setCurrency("NGN");
 /**
-Email-> String: Used to specify the email attached to the transaction
-*/
-transactionModel.setEmail("seerbittest@gmail.com");
+ Email-> String: Used to specify the email attached to the transaction
+ */
+        transactionModel.setEmail("seerbittest@gmail.com");
 /**
-Amount-> int: Used to specify the amount of payment to be made
-*/
-transactionModel.setAmount(100);
+ Amount-> int: Used to specify the amount of payment to be made
+ */
+        transactionModel.setAmount(100);
 /**
-Description-> String: Used to specify the description of the payment
-*/
-transactionModel.setDescription("Payment of bils");
+ Description-> String: Used to specify the description of the payment
+ */
+        transactionModel.setDescription("Payment of bils");
 /**
-Country-> String: Used to specify the Country
-*/
-transactionModel.setCountry("NG");
+ Country-> String: Used to specify the Country
+ */
+        transactionModel.setCountry("NG");
 /**
-*Callbackurl-> String: Used to specify the callback 
-url this can be passed as an empty string if none is avaliable
-*/
-transactionModel.setCallbackurl("https://whatever.com");
+ *Callbackurl-> String: Used to specify the callback 
+ url this can be passed as an empty string if none is avaliable
+ */
+        transactionModel.setCallbackurl("https://whatever.com");
 /**
-Public key-> String: Used to specify the public key associated with the developers account
-*/
-transactionModel.setPublic_key("public key");
+ Public key-> String: Used to specify the public key associated with the developers account
+ */
+        transactionModel.setPublic_key("public key");
 /**
-*Fullname-> String: Used to specify the full name associated with the payment
-*/
-transactionModel.setFull_name("Seer Bit");
+ *Fullname-> String: Used to specify the full name associated with the payment
+ */
+        transactionModel.setFull_name("Seer Bit");
 ```
 ### Closing the seerbit SDK
 

@@ -1,7 +1,7 @@
 package com.seerbit.seerbitandroid.entity;
 
 import com.google.gson.annotations.SerializedName;
-import com.seerbit.seerbitandroid.data.SuccessModel;
+import com.seerbit.seerbitandroid.view.webviews.SuccessModel;
 
 public class SuccessEntity {
     @SerializedName("event")
