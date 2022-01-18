@@ -38,7 +38,10 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
         this.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         this.getSettings().setLoadWithOverviewMode(true);
         this.getSettings().setDomStorageEnabled(true);
+        this.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
         this.addJavascriptInterface(new JSTestJV(context), "Logger");
+        this.getSettings().setAllowFileAccessFromFileURLs(true);
+        this.getSettings().setAllowUniversalAccessFromFileURLs(true);
         this.addJavascriptInterface(new Callback(context, SeerbitWebView.this), "AndroidFunction");
         this.loadData(getHtml(transactionModel), "text/HTML", "UTF-8");
     }
