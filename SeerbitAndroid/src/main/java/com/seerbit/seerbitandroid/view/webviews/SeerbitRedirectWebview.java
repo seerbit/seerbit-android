@@ -39,12 +39,15 @@ public class SeerbitRedirectWebview extends WebView implements
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.getSettings().setJavaScriptEnabled(true);
+        this.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
         this.setWebChromeClient(new SeerbitChromeClient());
         this.setWebViewClient(new SeerbitClient(this));
         this.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         this.getSettings().setUseWideViewPort(true);
         this.getSettings().setLoadWithOverviewMode(true);
         this.getSettings().setDomStorageEnabled(true);
+        this.getSettings().setAllowFileAccessFromFileURLs(true);
+        this.getSettings().setAllowUniversalAccessFromFileURLs(true);
         this.loadUrl(url);
     }
 
