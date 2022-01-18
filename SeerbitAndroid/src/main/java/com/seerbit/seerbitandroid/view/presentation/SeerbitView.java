@@ -92,6 +92,6 @@ public class SeerbitView extends FrameLayout implements
             public void run() {
                 close();
             }
-        }, 4000);
+        }, 7000);
     }
 }
