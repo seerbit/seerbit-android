@@ -99,12 +99,14 @@ public class SeerbitView extends FrameLayout implements
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                transactionModel.setReportLink("https://dummy.com");
-                Log.d("Debug", "XXXrun: "+transactionModel.getReportLink());
-                seerbitWebView.clearCache(true);
-                seerbitWebView = new SeerbitWebView(context, transactionModel, SeerbitView.this, SeerbitView.this);
-                removeView(seerbitRedirectWebview);
-                addView(seerbitWebView);
+                if (url.contains("vers=one") || url.contains("vers=two") && url.contains("pubk="+transactionModel.getPublic_key())){
+                    transactionModel.setReportLink(url);
+                    Log.d("Debug", "XXXrun: "+transactionModel.getReportLink());
+                    seerbitWebView.clearCache(true);
+                    seerbitWebView = new SeerbitWebView(context, transactionModel, SeerbitView.this, SeerbitView.this);
+                    removeView(seerbitRedirectWebview);
+                    addView(seerbitWebView);
+                }
             }
         });
     }
