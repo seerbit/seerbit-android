@@ -6,6 +6,7 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
+import com.seerbit.seerbitandroid.view.webviews.SuccessModel;
 import com.seerbit.seerbitandroid.view.webviews.TransactionModel;
 import com.seerbit.seerbitandroid.view.webviews.CongratsWebview;
 import com.seerbit.seerbitandroid.view.webviews.SeerbitRedirectWebview;
@@ -22,6 +23,9 @@ public class SeerbitView extends FrameLayout implements
     SeerbitWebView seerbitWebView;
     SeerbitRedirectWebview seerbitRedirectWebview;
     Activity context;
+    TransactionModel transactionModel;
+    EventsListener onComplete;
+
     public SeerbitView(@NonNull Activity context) {
         super(context);
         this.context = context;
@@ -32,6 +36,7 @@ public class SeerbitView extends FrameLayout implements
             removeView(seerbitWebView);
             seerbitWebView = null;
         }
+        this.transactionModel = transactionModel;
         seerbitWebView = new SeerbitWebView(context, transactionModel, this, this);
         addView(seerbitWebView);
     }
@@ -50,10 +55,16 @@ public class SeerbitView extends FrameLayout implements
         Log.d("TAG", "onRedirct: "+url);
     }
 
+    public void addEventListener(EventsListener eventsListener){
+        this.onComplete= eventsListener;
+    }
+
     public void close(){
         SeerbitView view = this;
         seerbitWebView = null;
         seerbitRedirectWebview = null;
+        this.transactionModel = null;
+        this.onComplete = null;
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -63,13 +74,23 @@ public class SeerbitView extends FrameLayout implements
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(SuccessModel successModel) {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                close();
+                onComplete.OnCompleteListener(successModel);
             }
         }, 2000);
+    }
+
+    @Override
+    public void onClose() {
+        onComplete.onCloseListener();
+    }
+
+    @Override
+    public void onError() {
+        onComplete.onError();
     }
 
     @Override
@@ -78,20 +99,24 @@ public class SeerbitView extends FrameLayout implements
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                CongratsWebview congratsWebview = new CongratsWebview(context, url, view);
+                transactionModel.setReportLink("https://dummy.com");
+                Log.d("Debug", "XXXrun: "+transactionModel.getReportLink());
+                seerbitWebView.clearCache(true);
+                seerbitWebView = new SeerbitWebView(context, transactionModel, SeerbitView.this, SeerbitView.this);
                 removeView(seerbitRedirectWebview);
-                addView(congratsWebview);
+                addView(seerbitWebView);
             }
         });
     }
 
     @Override
     public void onCongratsSuccess() {
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                close();
-            }
-        }, 7000);
+
+    }
+
+    public interface EventsListener{
+        void OnCompleteListener(SuccessModel successModel);
+        void onCloseListener();
+        void onError();
     }
 }

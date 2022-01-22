@@ -3,37 +3,27 @@ package com.seerbit.seerbitandroid.view.webviews;
 import com.google.gson.annotations.SerializedName;
 
 public class SuccessModel {
-    @SerializedName("payments")
-    private PaymentModel payment;
+    @SerializedName("response")
+    private ResponseModel response;
 
-    @SerializedName("code")
-    private String code;
+    @SerializedName("event")
+    private String event;
 
-    public PaymentModel getPayment() {
-        return payment;
+    public ResponseModel getResponse() {
+        return response;
     }
 
-    public void setPayment(PaymentModel payment) {
-        this.payment = payment;
+    public void setResponse(ResponseModel payment) {
+        this.response = payment;
     }
 
     public String getCode() {
-        return code;
+        return event;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCode(String event) {
+        this.event = event;
     }
 
-    @SerializedName("message")
-    private String message;
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
 }

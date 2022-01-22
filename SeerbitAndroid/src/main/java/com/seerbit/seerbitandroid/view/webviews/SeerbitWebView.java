@@ -10,9 +10,13 @@ import android.webkit.WebView;
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.seerbit.seerbitandroid.client.SeerbitChromeClient;
 import com.seerbit.seerbitandroid.interfaces.Callback;
 import com.seerbit.seerbitandroid.utils.JSTestJV;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SeerbitWebView extends WebView implements Callback.eventsListener{
     public static final String TAG = SeerbitWebView.class.getSimpleName();
@@ -64,7 +68,7 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
                 "                 callbackurl: \""+ transactionModel.getCallbackurl() + "\",\n" +
                 "                 public_key: \""+ transactionModel.getPublic_key() + "\",\n" +
                 "                 narrator: \"seerbit-react-native\",\n"+
-                "                 report_link: \"\",\n"+
+                "                 report_link: \""+transactionModel.getReportLink()+"\",\n"+
                 "                 pocketReference: \""+transactionModel.getPocketReference()+"\",\n"+
                 "                 vendorId: \""+transactionModel.getVendorId()+"\",\n"+
                 "                 version: \"0.2.0\"\n"+
@@ -92,24 +96,35 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
     @Override
     public void onCallback(String response) {
         try{
-            RedirectModel data =new RedirectModel() ;
-            Gson gson = new Gson();
-            data= gson.fromJson(response,RedirectModel.class);
-
-            Log.d(TAG, "vvvonCallback: "+data.getRedirectLink().toString());
-            Log.d(TAG, "vvvonCallback: "+response);
-            onRedirect.redirct(data.getRedirectLink());
+            JSONObject json = new JSONObject(response);
+            String event = json.getString("event");
+            if (event.contains("error")){
+                onSuccessfulPayment.onError();
+            }
+            else{
+                try{
+                    RedirectModel data =new RedirectModel() ;
+                    Gson gson = new Gson();
+                    data= gson.fromJson(response,RedirectModel.class);
+                    onRedirect.redirct(data.getRedirectLink());
+                }
+                catch (Exception e){
+                    // Payment doesn't require redirect
+                    SuccessModel successModel = new SuccessModel();
+                    Gson gson = new Gson();
+                    successModel = gson.fromJson(response, SuccessModel.class);
+                    onSuccessfulPayment.onSuccess(successModel);
+                }
+            }
         }
         catch (Exception e){
-            // Payment doesn't require redirect
-            Log.d(TAG, "vvvonCallback: close called"+e.getMessage());
-            onSuccessfulPayment.onSuccess();
+
         }
     }
 
     @Override
     public void onClose(String response) {
-        Log.d(TAG, "vvvonCallback: "+response);
+        onSuccessfulPayment.onClose();
     }
 
     public interface onRedirect{
@@ -117,7 +132,9 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
     }
 
     public interface onSuccessfulPayment{
-        void onSuccess();
+        void onSuccess(SuccessModel successModel);
+        void onClose();
+        void onError();
     }
 }
 

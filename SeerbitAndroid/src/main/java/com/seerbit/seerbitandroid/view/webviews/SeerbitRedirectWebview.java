@@ -52,7 +52,17 @@ public class SeerbitRedirectWebview extends WebView implements
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(SuccessModel successModel) {
+
+    }
+
+    @Override
+    public void onClose() {
+
+    }
+
+    @Override
+    public void onError() {
 
     }
 

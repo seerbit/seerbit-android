@@ -3,7 +3,7 @@ package com.seerbit.seerbitandroid.view.webviews;
 import android.webkit.JavascriptInterface;
 
 public class TransactionModel {
-    String tranref, currency, email, description, full_name, country, callbackurl, public_key, pocketReference, vendorId;
+    String tranref, currency, email, description, full_name, country, repost_link, callbackurl, public_key, pocketReference, vendorId;
     int amount;
 
     public TransactionModel(String tranref,
@@ -16,7 +16,6 @@ public class TransactionModel {
                             String public_key,
                             String pocketReference,
                             String vendorId,
-                            String version,
                             int amount) {
         this.tranref = tranref;
         this.currency = currency;
@@ -29,9 +28,11 @@ public class TransactionModel {
         this.pocketReference = pocketReference;
         this.vendorId = vendorId;
         this.amount = amount;
+        this.repost_link = "";
     }
 
     public TransactionModel() {
+        this.repost_link = "";
     }
 
     @JavascriptInterface
@@ -44,6 +45,15 @@ public class TransactionModel {
         this.tranref = tranref;
     }
 
+    @JavascriptInterface
+    public String getReportLink(){
+        return repost_link;
+    }
+
+    @JavascriptInterface
+    public void setReportLink(String link){
+        this.repost_link = link;
+    }
     @JavascriptInterface
     public String getCurrency() {
         return currency;

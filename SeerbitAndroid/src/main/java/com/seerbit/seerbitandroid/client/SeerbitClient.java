@@ -44,4 +44,5 @@ public class SeerbitClient extends WebViewClient {
     public interface onOverrideUrlLoading{
         void overrideUrlLoading(String url);
     }
+
 }
