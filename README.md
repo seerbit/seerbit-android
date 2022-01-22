@@ -129,41 +129,41 @@ TransactionModel transactionModel = new TransactionModel();
 /*
 transRef-> String: Used as a transaction reference
 */
-        String transRef = ""+System.currentTimeMillis();
-        transactionModel.setTranref(transRef);
+String transRef = ""+System.currentTimeMillis();
+transactionModel.setTranref(transRef);
 /**
  Currency-> String: Used to specify the currency of payment
  */
-        transactionModel.setCurrency("NGN");
+transactionModel.setCurrency("NGN");
 /**
  Email-> String: Used to specify the email attached to the transaction
- */
-        transactionModel.setEmail("seerbittest@gmail.com");
+*/
+transactionModel.setEmail("seerbittest@gmail.com");
 /**
  Amount-> int: Used to specify the amount of payment to be made
- */
-        transactionModel.setAmount(100);
+*/
+transactionModel.setAmount(100);
 /**
  Description-> String: Used to specify the description of the payment
  */
-        transactionModel.setDescription("Payment of bils");
+transactionModel.setDescription("Payment of bils");
 /**
  Country-> String: Used to specify the Country
- */
-        transactionModel.setCountry("NG");
+*/
+transactionModel.setCountry("NG");
 /**
- *Callbackurl-> String: Used to specify the callback 
- url this can be passed as an empty string if none is avaliable
- */
-        transactionModel.setCallbackurl("https://whatever.com");
+Callbackurl-> String: Used to specify the callback 
+url this can be passed as an empty string if none is avaliable
+*/
+transactionModel.setCallbackurl("https://whatever.com");
 /**
  Public key-> String: Used to specify the public key associated with the developers account
- */
-        transactionModel.setPublic_key("public key");
+*/
+transactionModel.setPublic_key("public key");
 /**
  *Fullname-> String: Used to specify the full name associated with the payment
- */
-        transactionModel.setFull_name("Seer Bit");
+*/
+transactionModel.setFull_name("Seer Bit");
 ```
 ### Closing the seerbit SDK
 
