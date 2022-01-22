@@ -21,7 +21,6 @@ public class SeerbitClient extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        Log.d(TAG, "shouldOverrideUrlLoading: "+url);
         onOverrideUrlLoading.overrideUrlLoading(url);
         return false;
     }

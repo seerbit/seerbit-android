@@ -101,7 +101,6 @@ public class SeerbitView extends FrameLayout implements
             public void run() {
                 if (url.contains("vers=one") || url.contains("vers=two") && url.contains("pubk="+transactionModel.getPublic_key())){
                     transactionModel.setReportLink(url);
-                    Log.d("Debug", "XXXrun: "+transactionModel.getReportLink());
                     seerbitWebView.clearCache(true);
                     seerbitWebView = new SeerbitWebView(context, transactionModel, SeerbitView.this, SeerbitView.this);
                     removeView(seerbitRedirectWebview);
