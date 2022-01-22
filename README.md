@@ -171,11 +171,12 @@ In case the need ever arises to manually close the seerbit SDK. There is a metho
 
 ### State flow of the API
 
-The expected workflow of the API is to firstly create an instance of the seerbit SDK, the call the .open() method by passing it a transaction model to open, the view is automatically closed after a successful transaction.
+The expected workflow of the API is to firstly create an instance of the seerbit SDK, the call the .open() method by passing it a transaction model to open, the view is automatically closed after a successful transaction. Click here for ann example app <a href="https://github.com/seerbit/seerbit-android/tree/master/app" title = "example">
+
 
 ## Contributors
 <span>
-<a href="https://github.com/adewoleopeyemi">
+<a href="https://github.com/adewoleopeyemi" title="Adewole Opeyemi">
   <img src="https://github.com/adewoleopeyemi.png?size=50">
 </a>
 
