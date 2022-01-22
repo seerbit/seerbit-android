@@ -93,6 +93,29 @@ FrameLayout webView = findViewById(R.id.view);
 
 // opens the view with the defined transaction model
         seerbitWebView.open(transactionModel);
+	
+	//add a EventListener to listen to various states of the sdk
+	seerbitWebView.addEventListener(new SeerbitView.EventsListener() {
+            @Override
+            public void OnCompleteListener(SuccessModel successModel) {
+                //get data associated with transaction
+                Log.d(TAG, "OnCompleteListener: "+successModel.getResponse().getPayments().getCountry());
+                seerbitWebView.close();
+            }
+
+            @Override
+            public void onCloseListener() {
+                //Case whem the user cancels the transaction manually
+                seerbitWebView.close();
+            }
+
+            @Override
+            public void onError() {
+                //Something went wrong close transaction
+                seerbitWebView.close();
+            }
+
+        });
 ```
 
 ## API Documentation
