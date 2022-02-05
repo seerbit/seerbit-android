@@ -2,9 +2,97 @@ package com.seerbit.seerbitandroid.view.webviews;
 
 import android.webkit.JavascriptInterface;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TransactionModel {
-    String tranref, currency, email, description, full_name, country, repost_link, callbackurl, public_key, pocketReference, vendorId;
-    int amount;
+    private String tranref, currency, email, description, full_name, country, repost_link, callbackurl, public_key, pocketReference, vendorId;
+    private int amount;
+    private boolean setAmountByCustomer = false;
+    boolean close_prompt = false;
+    boolean close_on_success = true;
+    private String border_color = "#000000";
+    private String background_color = "#004C64";
+    private String button_color = "#0084A0";
+    private boolean confetti = true;
+    private String logo = "";
+    private List<String> payment_method = new ArrayList<>();
+
+    public boolean isSetAmountByCustomer() {
+        return setAmountByCustomer;
+    }
+
+    public String getBorder_color() {
+        return border_color;
+    }
+
+    public void setBorder_color(String border_color) {
+        this.border_color = border_color;
+    }
+
+    public String getBackground_color() {
+        return background_color;
+    }
+
+    public void setBackground_color(String background_color) {
+        this.background_color = background_color;
+    }
+
+    public String getButton_color() {
+        return button_color;
+    }
+
+    public void setButton_color(String button_color) {
+        this.button_color = button_color;
+    }
+
+    public boolean isConfetti() {
+        return confetti;
+    }
+
+    public void setConfetti(boolean confetti) {
+        this.confetti = confetti;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public List<String> getPayment_method() {
+        return payment_method;
+    }
+
+    public void setPayment_method(List<String> payment_method) {
+        this.payment_method = payment_method;
+    }
+
+    public boolean isClose_prompt() {
+        return close_prompt;
+    }
+
+    public void setClose_prompt(boolean close_prompt) {
+        this.close_prompt = close_prompt;
+    }
+
+    public boolean isClose_on_success() {
+        return close_on_success;
+    }
+
+    public void setClose_on_success(boolean close_on_success) {
+        this.close_on_success = close_on_success;
+    }
+
+    public boolean isAmountSetByCustomer() {
+        return setAmountByCustomer;
+    }
+
+    public void setSetAmountByCustomer(boolean setAmountByCustomer) {
+        this.setAmountByCustomer = setAmountByCustomer;
+    }
 
     public TransactionModel(String tranref,
                             String currency,
@@ -33,6 +121,11 @@ public class TransactionModel {
 
     public TransactionModel() {
         this.repost_link = "";
+        payment_method.add("\"card\"");
+        payment_method.add("\"account\"");
+        payment_method.add("\"transfer\"");
+        payment_method.add("\"wallet\"");
+        payment_method.add("\"ussd\"");
     }
 
     @JavascriptInterface

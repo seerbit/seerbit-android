@@ -38,6 +38,7 @@ public class SeerbitView extends FrameLayout implements
         }
         this.transactionModel = transactionModel;
         seerbitWebView = new SeerbitWebView(context, transactionModel, this, this);
+        seerbitWebView.initView(context, transactionModel);
         addView(seerbitWebView);
     }
 
@@ -75,12 +76,19 @@ public class SeerbitView extends FrameLayout implements
 
     @Override
     public void onSuccess(SuccessModel successModel) {
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                onComplete.OnCompleteListener(successModel);
-            }
-        }, 2000);
+        Log.d("Debug", "onClose: onCLose callse");
+        if(transactionModel.isClose_on_success()){
+            close();
+        }
+        else{
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    //if (transactionModel.isClose_on_success()) close();
+                    onComplete.OnCompleteListener(successModel);
+                }
+            }, 2000);
+        }
     }
 
     @Override
@@ -101,8 +109,7 @@ public class SeerbitView extends FrameLayout implements
             public void run() {
                 if (url.contains("vers=one") || url.contains("vers=two") && url.contains("pubk="+transactionModel.getPublic_key())){
                     transactionModel.setReportLink(url);
-                    seerbitWebView.clearCache(true);
-                    seerbitWebView = new SeerbitWebView(context, transactionModel, SeerbitView.this, SeerbitView.this);
+                    seerbitWebView.loadhtml(transactionModel);
                     removeView(seerbitRedirectWebview);
                     addView(seerbitWebView);
                 }
