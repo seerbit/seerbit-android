@@ -101,18 +101,23 @@ public class SeerbitView extends FrameLayout implements
         onComplete.onError();
     }
 
+    Boolean loaded = false;
     @Override
     public void onCongrats(String url) {
         SeerbitView view = this;
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (url.contains("vers=one") || url.contains("vers=two") && url.contains("pubk="+transactionModel.getPublic_key())){
+                Log.d("Tag", "run: "+url);
+                //if (url.contains("vers=one") || url.contains("vers=two") && url.contains("pubk="+transactionModel.getPublic_key())){
+                if (!loaded){
                     transactionModel.setReportLink(url);
                     seerbitWebView.loadhtml(transactionModel);
                     removeView(seerbitRedirectWebview);
                     addView(seerbitWebView);
+                    loaded = true;
                 }
+                //}
             }
         });
     }
