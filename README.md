@@ -26,7 +26,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.seerbit:seerbit-android:1.1.3'
+	        implementation 'com.github.seerbit:seerbit-android:1.1.4'
 	}
 
 
@@ -86,6 +86,7 @@ transactionModel.setCountry("your country");
 transactionModel.setCallbackurl("https://yourcallbackurl.com");
 transactionModel.setPublic_key("your public key");
 transactionModel.setFull_name("full name");
+transactionModel.setClose_on_success(false);
 
 //Create a new instance of seerbitview
 SeerbitView seerbitWebView = new SeerbitView(this);
@@ -100,6 +101,7 @@ seerbitWebView.addEventListener(new SeerbitView.EventsListener() {
      public void OnCompleteListener(SuccessModel successModel) {
      	//get data associated with transaction
      	Log.d(TAG, "OnCompleteListener: "+successModel.getResponse().getPayments().getCountry());
+	//Close the webivew
         seerbitWebView.close();
      }
 
@@ -164,6 +166,13 @@ transactionModel.setPublic_key("public key");
  *Fullname-> String: Used to specify the full name associated with the payment
 */
 transactionModel.setFull_name("Seer Bit");
+
+/**
+*Close on Success -> Boolean: Used to tell thw SDK whether to close immediately after a successful transaction or not (defaults to true)
+*/
+transactionModel.setClose_on_success(false);
+
+
 ```
 ### Closing the seerbit SDK
 
