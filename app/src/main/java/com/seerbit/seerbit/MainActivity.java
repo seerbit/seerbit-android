@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             public void OnCompleteListener(SuccessModel successModel) {
                 //get data associated with transaction
                 Log.d(TAG, "OnCompleteListener: "+successModel.getResponse().getPayments().getCountry());
-                seerbitWebView.close();
+                //seerbitWebView.close();
             }
 
             @Override

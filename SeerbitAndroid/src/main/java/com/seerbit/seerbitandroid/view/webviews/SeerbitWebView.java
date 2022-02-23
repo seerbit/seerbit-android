@@ -27,13 +27,13 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
     public SeerbitWebView(@NonNull Context context, @NonNull TransactionModel transactionModel, onRedirect onRedirect, onSuccessfulPayment onSuccessfulPayment) {
         super(context);
         context = context;
-        initView(context, transactionModel);
+        //initView(context, transactionModel);
         this.onRedirect = onRedirect;
         this.onSuccessfulPayment = onSuccessfulPayment;
     }
 
     @SuppressLint({ "SetJavaScriptEnabled" })
-    private void initView(Context context, TransactionModel transactionModel){
+    public void initView(Context context, TransactionModel transactionModel){
         Log.d(TAG, "initView: ");
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -51,6 +51,7 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
     }
 
     protected String getHtml(TransactionModel transactionModel){
+        Log.d(TAG, "getHtml: "+transactionModel.getPayment_method().toString());
         return "<!DOCTYPE >\n" +
                 "<html>\n" +
                 "  <head>\n" +
@@ -71,7 +72,19 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
                 "                 report_link: \""+transactionModel.getReportLink()+"\",\n"+
                 "                 pocketReference: \""+transactionModel.getPocketReference()+"\",\n"+
                 "                 vendorId: \""+transactionModel.getVendorId()+"\",\n"+
-                "                 version: \"0.2.0\"\n"+
+                "                 version: \"0.2.0\",\n"+
+                "                 close_prompt: "+transactionModel.isClose_prompt()+",\n"+
+                "                 close_on_success:"+transactionModel.isClose_on_success()+",\n"+
+                "                 customization: {\n"+
+                "                     theme: {\n"+
+               // "                         border_color: \""+transactionModel.getBorder_color()+"\",\n"+
+                //"                         background_color: \""+transactionModel.getBackground_color()+"\",\n"+
+               // "                         button_color: \""+transactionModel.getButton_color()+"\",\n"+
+                "                        },\n"+
+                "                     payment_method:"+transactionModel.getPayment_method().toString()+",\n"+
+                "                     confetti:"+transactionModel.isConfetti()+",\n"+
+                "                     logo:\""+transactionModel.getLogo()+"\",\n"+
+                "                     }\n"+
                 "                },\n" +
                 "                function callback(response) {\n" +
                 "                 var resp = JSON.stringify({event:'callback', response});" +
@@ -93,8 +106,13 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
                 "</html>";
     }
 
+    public void loadhtml(TransactionModel transactionModel){
+        this.loadData(getHtml(transactionModel), "text/HTML", "UTF-8");
+    }
+
     @Override
     public void onCallback(String response) {
+        Log.d(TAG, "onCallback: "+response);
         try{
             JSONObject json = new JSONObject(response);
             String event = json.getString("event");
@@ -118,7 +136,7 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
             }
         }
         catch (Exception e){
-
+            Log.d(TAG, "onCallback: "+e.getMessage());
         }
     }
 
