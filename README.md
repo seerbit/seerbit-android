@@ -45,7 +45,7 @@ Step 2. Add the dependency
 	<dependency>
 	    <groupId>com.github.seerbit</groupId>
 	    <artifactId>seerbit-android</artifactId>
-	    <version>1.1.3</version>
+	    <version>1.1.4</version>
 	</dependency>
 ## API Documentation
 https://doc.seerbit.com
