@@ -100,7 +100,7 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
                 "  </head>\n" +
                 "  <body onload=\"javascript:return paywithSeerbit();\">\n" +
                 "        <form>\n" +
-                "            <script src=\"https://stg-checkout.seerbitapi.com/api/v2/seerbit.js\"></script>\n" +
+                "            <script src=\"https://checkout.seerbitapi.com/api/v2/seerbit.js\"></script>\n" +
                 "        </form>" +
                 "  </body>\n" +
                 "</html>";
