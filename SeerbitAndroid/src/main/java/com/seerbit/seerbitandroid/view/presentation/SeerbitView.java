@@ -53,7 +53,6 @@ public class SeerbitView extends FrameLayout implements
                 addView(seerbitRedirectWebview);
             }
         });
-        Log.d("TAG", "onRedirct: "+url);
     }
 
     public void addEventListener(EventsListener eventsListener){
@@ -76,15 +75,14 @@ public class SeerbitView extends FrameLayout implements
 
     @Override
     public void onSuccess(SuccessModel successModel) {
-        Log.d("Debug", "onClose: onCLose callse");
         if(transactionModel.isClose_on_success()){
+            onComplete.OnCompleteListener(successModel);
             close();
         }
         else{
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    //if (transactionModel.isClose_on_success()) close();
                     onComplete.OnCompleteListener(successModel);
                 }
             }, 2000);
@@ -105,19 +103,13 @@ public class SeerbitView extends FrameLayout implements
     @Override
     public void onCongrats(String url) {
         SeerbitView view = this;
-        context.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("Tag", "run: "+url);
-                //if (url.contains("vers=one") || url.contains("vers=two") && url.contains("pubk="+transactionModel.getPublic_key())){
-                if (!loaded){
-                    transactionModel.setReportLink(url);
-                    seerbitWebView.loadhtml(transactionModel);
-                    removeView(seerbitRedirectWebview);
-                    addView(seerbitWebView);
-                    loaded = true;
-                }
-                //}
+        context.runOnUiThread(() -> {
+            if (!loaded){
+                transactionModel.setReportLink(url);
+                seerbitWebView.loadhtml(transactionModel);
+                removeView(seerbitRedirectWebview);
+                addView(seerbitWebView);
+                loaded = true;
             }
         });
     }

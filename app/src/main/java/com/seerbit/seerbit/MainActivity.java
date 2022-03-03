@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         transactionModel.setCallbackurl("");
         transactionModel.setPublic_key("SBTESTPUBK_y9xF4issbbpKaMEnP5Fv4y0u75523ko2");
         transactionModel.setFull_name("Adewole Opeyemi");
+        transactionModel.setClose_on_success(true);
         seerbitWebView = new SeerbitView(this);
         webView.addView(seerbitWebView);
         seerbitWebView.open(transactionModel);
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
             public void OnCompleteListener(SuccessModel successModel) {
                 //get data associated with transaction
                 Log.d(TAG, "OnCompleteListener: "+successModel.getResponse().getPayments().getCountry());
-                //seerbitWebView.close();
+                //Close the webview
+                seerbitWebView.close();
             }
 
             @Override
