@@ -26,7 +26,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.seerbit:seerbit-android:1.1.4'
+	        implementation 'com.github.seerbit:seerbit-android:1.1.5'
 	}
 
 
@@ -45,7 +45,7 @@ Step 2. Add the dependency
 	<dependency>
 	    <groupId>com.github.seerbit</groupId>
 	    <artifactId>seerbit-android</artifactId>
-	    <version>1.1.4</version>
+	    <version>1.1.5</version>
 	</dependency>
 ## API Documentation
 https://doc.seerbit.com
