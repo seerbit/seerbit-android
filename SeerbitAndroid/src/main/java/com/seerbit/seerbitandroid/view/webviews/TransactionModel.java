@@ -6,12 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionModel {
-    private String tranref, currency, email, description, full_name, country, repost_link, callbackurl, public_key, pocketReference, vendorId;
+    private String tranref, currency, email, description, full_name, country, repost_link, callbackurl, public_key;
     private int amount;
     private boolean setAmountByCustomer = false;
     boolean close_prompt = false;
     boolean close_on_success = true;
     private String border_color = "#000000";
+    private String pocketReference = "";
+    private String vendorId = "";
     private String background_color = "#004C64";
     private String button_color = "#0084A0";
     private boolean confetti = true;
