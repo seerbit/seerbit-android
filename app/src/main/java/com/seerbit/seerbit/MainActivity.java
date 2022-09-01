@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         transactionModel.setPublic_key("SBTESTPUBK_y9xF4issbbpKaMEnP5Fv4");
         transactionModel.setFull_name("Adewole Opeyemi");
         transactionModel.setClose_on_success(true);
+        transactionModel.setTokenize(false);
         seerbitWebView = new SeerbitView(this);
         webView.addView(seerbitWebView);
         seerbitWebView.open(transactionModel);

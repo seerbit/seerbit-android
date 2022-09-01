@@ -37,6 +37,8 @@ public class PaymentModel {
     String processorMessage;
     @SerializedName("reason")
     String reason;
+    @SerializedName("authorizationCode")
+    String authorizationCode;
 
     public String getReference() {
         return reference;
@@ -172,5 +174,13 @@ public class PaymentModel {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getAuthorizationCode() {
+        return authorizationCode;
+    }
+
+    public void setAuthorizationCode(String authorizationCode) {
+        this.authorizationCode = authorizationCode;
     }
 }

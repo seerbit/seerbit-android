@@ -75,6 +75,7 @@ public class SeerbitWebView extends WebView implements Callback.eventsListener{
                 "                 version: \"0.2.0\",\n"+
                 "                 close_prompt: "+transactionModel.isClose_prompt()+",\n"+
                 "                 close_on_success:"+transactionModel.isClose_on_success()+",\n"+
+                "                 tokenize:"+transactionModel.isTokenize()+",\n"+
                 "                 customization: {\n"+
                 "                     theme: {\n"+
                // "                         border_color: \""+transactionModel.getBorder_color()+"\",\n"+

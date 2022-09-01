@@ -10,6 +10,7 @@ public class TransactionModel {
     private int amount;
     private boolean setAmountByCustomer = false;
     boolean close_prompt = false;
+    boolean tokenize = false;
     boolean close_on_success = true;
     private String border_color = "#000000";
     private String pocketReference = "";
@@ -78,6 +79,14 @@ public class TransactionModel {
 
     public void setClose_prompt(boolean close_prompt) {
         this.close_prompt = close_prompt;
+    }
+
+    public boolean isTokenize() {
+        return tokenize;
+    }
+
+    public void setTokenize(boolean tokenize) {
+        this.tokenize = tokenize;
     }
 
     public boolean isClose_on_success() {
