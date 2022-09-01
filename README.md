@@ -87,6 +87,7 @@ transactionModel.setCallbackurl("https://yourcallbackurl.com");
 transactionModel.setPublic_key("your public key");
 transactionModel.setFull_name("full name");
 transactionModel.setClose_on_success(false);
+transactionModel.setTokenize(false);
 
 //Create a new instance of seerbitview
 SeerbitView seerbitWebView = new SeerbitView(this);
@@ -172,6 +173,11 @@ transactionModel.setFull_name("Seer Bit");
 */
 transactionModel.setClose_on_success(false);
 
+/**
+*Tokenize -> Boolean: Used to tokenize cards for subscription (defaults to false)
+*/
+transactionModel.setTokenize(false);
+
 
 ```
 ### Closing the seerbit SDK
@@ -189,7 +195,7 @@ The expected workflow of the API is to firstly create an instance of the seerbit
   <img src="https://github.com/adewoleopeyemi.png?size=50">
 </a>
 
-<a href="https://github.com/amoskeyz">
+<a href="https://github.com/amoskeyz" title="amoskeyz">
   <img src="https://github.com/amoskeyz.png?size=50">
 </a>
 </a>

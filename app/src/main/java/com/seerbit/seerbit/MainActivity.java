@@ -27,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
         transactionModel.setDescription("LIVE");
         transactionModel.setCountry("NG");
         transactionModel.setCallbackurl("");
-        transactionModel.setPublic_key("SBTESTPUBK_y9xF4issbbpKaMEnP5Fv4");
+        transactionModel.setPublic_key("SBTESTPUBK_NIaPkFjAqSsToi7Mrpa44SvVsXl4cBLU");
         transactionModel.setFull_name("Adewole Opeyemi");
         transactionModel.setClose_on_success(true);
+        transactionModel.setTokenize(false);
         seerbitWebView = new SeerbitView(this);
         webView.addView(seerbitWebView);
         seerbitWebView.open(transactionModel);
